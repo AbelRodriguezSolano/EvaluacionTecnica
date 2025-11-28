@@ -1,0 +1,61 @@
+@model EvaluacionTecnica.Application.DTOs.UserDto
+
+@{
+    ViewData["Title"] = "Eliminar Usuario";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h4>Eliminar Usuario</h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning" role="alert">
+                        <i class="bi bi-exclamation-triangle"></i>
+                        ¿Está seguro que desea eliminar este usuario?
+                    </div>
+
+                    <dl class="row">
+                        <dt class="col-sm-4">ID</dt>
+                        <dd class="col-sm-8">@Model.Id</dd>
+
+                        <dt class="col-sm-4">Nombre Completo</dt>
+                        <dd class="col-sm-8">@Model.Nombre @Model.Apellido</dd>
+
+                        <dt class="col-sm-4">Cédula</dt>
+                        <dd class="col-sm-8">@Model.Cedula</dd>
+
+                        <dt class="col-sm-4">Nombre de Usuario</dt>
+                        <dd class="col-sm-8">@Model.Usuario_Nombre</dd>
+
+                        <dt class="col-sm-4">Rol</dt>
+                        <dd class="col-sm-8"><span class="badge bg-info">@Model.RoleName</span></dd>
+
+                        <dt class="col-sm-4">Fecha de Nacimiento</dt>
+                        <dd class="col-sm-8">@Model.Fecha_Nacimiento.ToString("dd/MM/yyyy")</dd>
+
+                        <dt class="col-sm-4">Usuario Transacción</dt>
+                        <dd class="col-sm-8">@Model.Usuario_Transaccion</dd>
+
+                        <dt class="col-sm-4">Fecha Transacción</dt>
+                        <dd class="col-sm-8">@Model.Fecha_Transaccion.ToString("dd/MM/yyyy HH:mm")</dd>
+                    </dl>
+
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-danger">
+                                <i class="bi bi-trash"></i> Eliminar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
