@@ -56,11 +56,11 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             {
                 Id = 1,
                 RoleId = 1,
-                Nombre = "Simetrica",
-                Apellido = "Consulting",
+                Nombre = "User",
+                Apellido = "Admin",
                 Cedula = "25322522135",
                 Usuario_Nombre = "ADMIN",
-                Contraseña = "ADMIN",
+                Contraseña = BCrypt.Net.BCrypt.HashPassword("admin123"),
                 Fecha_Nacimiento = new DateTime(1990, 1, 1),
                 Usuario_Transaccion = "SYSTEM",
                 Fecha_Transaccion = new DateTime(2024, 1, 1)
@@ -69,11 +69,11 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             {
                 Id = 2,
                 RoleId = 2,
-                Nombre = "Nombre_desarrollador",
-                Apellido = "Consulting",
+                Nombre = "User",
+                Apellido = "Developer",
                 Cedula = "0000000000",
                 Usuario_Nombre = "DESARROLLADOR",
-                Contraseña = "APLICANTE",
+                Contraseña = BCrypt.Net.BCrypt.HashPassword("aplicante123"),
                 Fecha_Nacimiento = new DateTime(2000, 2, 25),
                 Usuario_Transaccion = "SYSTEM",
                 Fecha_Transaccion = new DateTime(2024, 1, 1)

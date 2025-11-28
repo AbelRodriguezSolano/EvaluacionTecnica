@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EvaluacionTecnica.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251128211247_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20251128225156_InitialCreateWithHashedPasswords")]
+    partial class InitialCreateWithHashedPasswords
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -133,12 +133,12 @@ namespace EvaluacionTecnica.Infrastructure.Migrations
                         new
                         {
                             Id = 1,
-                            Apellido = "Consulting",
+                            Apellido = "Admin",
                             Cedula = "25322522135",
-                            Contraseña = "ADMIN",
+                            Contraseña = "$2a$11$586UeUGFE0ZLYo2uXhpFe.i.0kVwO7L38KRjhLj3XkwpcaGvQwjRy",
                             Fecha_Nacimiento = new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Fecha_Transaccion = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Nombre = "Simetrica",
+                            Nombre = "User",
                             RoleId = 1,
                             Usuario_Nombre = "ADMIN",
                             Usuario_Transaccion = "SYSTEM"
@@ -146,12 +146,12 @@ namespace EvaluacionTecnica.Infrastructure.Migrations
                         new
                         {
                             Id = 2,
-                            Apellido = "Consulting",
+                            Apellido = "Developer",
                             Cedula = "0000000000",
-                            Contraseña = "APLICANTE",
+                            Contraseña = "$2a$11$lywmS6Q.40p/cZf3RCyiEeRy6JnJv7I/ZA26u1J8GpEyheLPkeseO",
                             Fecha_Nacimiento = new DateTime(2000, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Fecha_Transaccion = new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            Nombre = "Nombre_desarrollador",
+                            Nombre = "User",
                             RoleId = 2,
                             Usuario_Nombre = "DESARROLLADOR",
                             Usuario_Transaccion = "SYSTEM"

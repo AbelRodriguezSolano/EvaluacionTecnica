@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EvaluacionTecnica.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialCreateWithHashedPasswords : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -69,8 +69,8 @@ namespace EvaluacionTecnica.Infrastructure.Migrations
                 columns: new[] { "Id", "Apellido", "Cedula", "Contraseña", "Fecha_Nacimiento", "Fecha_Transaccion", "Nombre", "RoleId", "Usuario_Nombre", "Usuario_Transaccion" },
                 values: new object[,]
                 {
-                    { 1, "Consulting", "25322522135", "ADMIN", new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Simetrica", 1, "ADMIN", "SYSTEM" },
-                    { 2, "Consulting", "0000000000", "APLICANTE", new DateTime(2000, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Nombre_desarrollador", 2, "DESARROLLADOR", "SYSTEM" }
+                    { 1, "Admin", "25322522135", "$2a$11$586UeUGFE0ZLYo2uXhpFe.i.0kVwO7L38KRjhLj3XkwpcaGvQwjRy", new DateTime(1990, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "User", 1, "ADMIN", "SYSTEM" },
+                    { 2, "Developer", "0000000000", "$2a$11$lywmS6Q.40p/cZf3RCyiEeRy6JnJv7I/ZA26u1J8GpEyheLPkeseO", new DateTime(2000, 2, 25, 0, 0, 0, 0, DateTimeKind.Unspecified), new DateTime(2024, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "User", 2, "DESARROLLADOR", "SYSTEM" }
                 });
 
             migrationBuilder.CreateIndex(
