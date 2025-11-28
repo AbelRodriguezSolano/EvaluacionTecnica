@@ -8,10 +8,12 @@ namespace EvaluacionTecnica.Application.Services;
 public class UserService : IUserService
 {
     private readonly IUserRepository _userRepository;
+    private readonly IPasswordHasher _passwordHasher;
 
-    public UserService(IUserRepository userRepository)
+    public UserService(IUserRepository userRepository, IPasswordHasher passwordHasher)
     {
         _userRepository = userRepository;
+        _passwordHasher = passwordHasher;
     }
 
     public async Task<IEnumerable<UserDto>> GetAllAsync()
@@ -37,7 +39,7 @@ public class UserService : IUserService
             Apellido = createUserDto.Apellido,
             Cedula = createUserDto.Cedula,
             Usuario_Nombre = createUserDto.Usuario_Nombre,
-            Contraseña = createUserDto.Contraseña,
+            Contraseña = _passwordHasher.HashPassword(createUserDto.Contraseña),
             Fecha_Nacimiento = createUserDto.Fecha_Nacimiento,
             Usuario_Transaccion = currentUser,
             Fecha_Transaccion = DateTime.Now
@@ -65,7 +67,7 @@ public class UserService : IUserService
 
         if (!string.IsNullOrEmpty(updateUserDto.Contraseña))
         {
-            user.Contraseña = updateUserDto.Contraseña;
+            user.Contraseña = _passwordHasher.HashPassword(updateUserDto.Contraseña);
         }
 
         await _userRepository.UpdateAsync(user);
