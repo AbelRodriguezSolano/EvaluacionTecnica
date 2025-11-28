@@ -1,0 +1,45 @@
+{
+  "name": "EvaluacionTecnica",
+  "dockerComposeFile": "../docker-compose.yml",
+  "service": "app",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+
+  // Configure tool-specific properties.
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csharp",
+        "ms-dotnettools.csdevkit",
+        "ms-dotnettools.vscode-dotnet-runtime",
+        "ms-mssql.mssql",
+        "formulahendry.dotnet-test-explorer"
+      ],
+      "settings": {
+        "omnisharp.useModernNet": true
+      }
+    }
+  },
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [5000, 5001, 1433],
+
+  // Environment variables for the container
+  "containerEnv": {
+    "DOTNET_SYSTEM_NET_HTTP_USESOCKETSHTTPHANDLER": "0"
+  },
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "dotnet restore",
+
+  // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+  "remoteUser": "vscode",
+
+  // Features to add to the dev container.
+  "features": {
+    "ghcr.io/devcontainers/features/dotnet:2": {
+      "version": "8.0",
+      "installUsingApt": false
+    },
+    "ghcr.io/devcontainers/features/git:1": {}
+  }
+}
