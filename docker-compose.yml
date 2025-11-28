@@ -10,7 +10,7 @@ services:
       - db
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Server=db,1433;Database=EvaluacionTecnicaDB;User Id=sa;Password=YourStrong@Passw0rd;TrustServerCertificate=True
+      - ConnectionStrings__DefaultConnection=Server=db,1433;Database=EvaluacionTecnicaDB;User Id=sa;Password=MyP@ssw0rd;TrustServerCertificate=True
     ports:
       - "5000:5000"
       - "5001:5001"
@@ -22,7 +22,7 @@ services:
     restart: unless-stopped
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=YourStrong@Passw0rd
+      - SA_PASSWORD=MyP@ssw0rd
       - MSSQL_PID=Express
     ports:
       - "1433:1433"
