@@ -1,0 +1,49 @@
+@model EvaluacionTecnica.Application.DTOs.RoleDto
+
+@{
+    ViewData["Title"] = "Eliminar Rol";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h4>Eliminar Rol</h4>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning" role="alert">
+                        <i class="bi bi-exclamation-triangle"></i>
+                        ¿Está seguro que desea eliminar este rol?
+                    </div>
+
+                    <dl class="row">
+                        <dt class="col-sm-4">ID</dt>
+                        <dd class="col-sm-8">@Model.Id</dd>
+
+                        <dt class="col-sm-4">Nombre</dt>
+                        <dd class="col-sm-8">@Model.Nombre</dd>
+
+                        <dt class="col-sm-4">Usuario Transacción</dt>
+                        <dd class="col-sm-8">@Model.Usuario_Transaccion</dd>
+
+                        <dt class="col-sm-4">Fecha Transacción</dt>
+                        <dd class="col-sm-8">@Model.Fecha_Transaccion.ToString("dd/MM/yyyy HH:mm")</dd>
+                    </dl>
+
+                    <form asp-action="Delete" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        <div class="d-flex justify-content-between">
+                            <a asp-action="Index" class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i> Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-danger">
+                                <i class="bi bi-trash"></i> Eliminar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

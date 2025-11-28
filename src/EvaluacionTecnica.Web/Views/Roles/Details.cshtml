@@ -1,0 +1,46 @@
+@model EvaluacionTecnica.Application.DTOs.RoleDto
+
+@{
+    ViewData["Title"] = "Detalles del Rol";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h4>Detalles del Rol</h4>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+                        <dt class="col-sm-4">ID</dt>
+                        <dd class="col-sm-8">@Model.Id</dd>
+
+                        <dt class="col-sm-4">Nombre</dt>
+                        <dd class="col-sm-8">@Model.Nombre</dd>
+
+                        <dt class="col-sm-4">Usuario Transacción</dt>
+                        <dd class="col-sm-8">@Model.Usuario_Transaccion</dd>
+
+                        <dt class="col-sm-4">Fecha Transacción</dt>
+                        <dd class="col-sm-8">@Model.Fecha_Transaccion.ToString("dd/MM/yyyy HH:mm:ss")</dd>
+                    </dl>
+
+                    <div class="d-flex justify-content-between">
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left"></i> Volver
+                        </a>
+                        <div>
+                            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
+                                <i class="bi bi-pencil"></i> Editar
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">
+                                <i class="bi bi-trash"></i> Eliminar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
