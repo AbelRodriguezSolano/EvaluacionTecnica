@@ -1,0 +1,113 @@
+@model EvaluacionTecnica.Application.DTOs.LoginDto
+
+@{
+    ViewData["Title"] = "Iniciar Sesión";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Evaluación Técnica</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <style>
+        body {
+            background-color: #f5f5f5;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .login-container {
+            max-width: 420px;
+            width: 100%;
+            padding: 20px;
+        }
+        .login-card {
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
+        }
+        .login-header {
+            background-color: #0d6efd;
+            color: white;
+            padding: 30px;
+            border-radius: 8px 8px 0 0;
+            text-align: center;
+        }
+        .login-body {
+            padding: 40px;
+            background: white;
+            border-radius: 0 0 8px 8px;
+        }
+        .btn-login {
+            background-color: #0d6efd;
+            border: none;
+            padding: 12px;
+            font-weight: 500;
+        }
+        .btn-login:hover {
+            background-color: #0b5ed7;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <h2 class="mb-0">Sistema de Gestión</h2>
+                <p class="mb-0 mt-2">Usuarios y Roles</p>
+            </div>
+            <div class="login-body">
+                <h4 class="text-center mb-4">Iniciar Sesión</h4>
+
+                @if (!string.IsNullOrEmpty(ViewData["ReturnUrl"]?.ToString()))
+                {
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        Debe iniciar sesión para acceder a esa página.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
+                <form asp-action="Login" asp-controller="Auth" method="post">
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                    <input type="hidden" name="returnUrl" value="@ViewData["ReturnUrl"]" />
+
+                    <div class="mb-3">
+                        <label asp-for="Usuario_Nombre" class="form-label"></label>
+                        <input asp-for="Usuario_Nombre" class="form-control form-control-lg" placeholder="Ingrese su usuario" autofocus />
+                        <span asp-validation-for="Usuario_Nombre" class="text-danger"></span>
+                    </div>
+
+                    <div class="mb-4">
+                        <label asp-for="Contraseña" class="form-label"></label>
+                        <input asp-for="Contraseña" class="form-control form-control-lg" placeholder="Ingrese su contraseña" />
+                        <span asp-validation-for="Contraseña" class="text-danger"></span>
+                    </div>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-login btn-lg">
+                            Iniciar Sesión
+                        </button>
+                    </div>
+                </form>
+
+                <div class="mt-4 pt-4 border-top text-center">
+                    <small class="text-muted">
+                        <strong>Usuarios de prueba:</strong><br>
+                        ADMIN / admin123 | DESARROLLADOR / aplicante123
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>
