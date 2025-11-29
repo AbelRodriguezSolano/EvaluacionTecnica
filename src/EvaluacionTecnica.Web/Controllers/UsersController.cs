@@ -18,9 +18,28 @@ public class UsersController : Controller
         _roleService = roleService;
     }
 
-    public async Task<IActionResult> Index()
+    public async Task<IActionResult> Index(UserFilterDto? filter)
     {
-        var users = await _userService.GetAllAsync();
+        IEnumerable<UserDto> users;
+
+        if (filter == null || (string.IsNullOrWhiteSpace(filter.SearchText) &&
+            !filter.RoleId.HasValue &&
+            string.IsNullOrWhiteSpace(filter.Cedula) &&
+            !filter.FechaNacimientoDesde.HasValue &&
+            !filter.FechaNacimientoHasta.HasValue &&
+            string.IsNullOrWhiteSpace(filter.OrderBy)))
+        {
+            users = await _userService.GetAllAsync();
+        }
+        else
+        {
+            users = await _userService.GetFilteredAsync(filter);
+        }
+
+        var roles = await _roleService.GetAllAsync();
+        ViewBag.Roles = new SelectList(roles, "Id", "Nombre", filter?.RoleId);
+        ViewBag.Filter = filter ?? new UserFilterDto();
+
         return View(users);
     }
 

@@ -20,6 +20,66 @@
         </div>
     }
 
+    <div class="card mb-3">
+        <div class="card-header">
+            <h5 class="mb-0">
+                <i class="bi bi-funnel"></i> Filtros de Búsqueda
+            </h5>
+        </div>
+        <div class="card-body">
+            <form method="get" asp-action="Index">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Buscar (Nombre, Apellido, Usuario)</label>
+                        <input type="text" name="SearchText" class="form-control" value="@ViewBag.Filter.SearchText" placeholder="Buscar...">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Rol</label>
+                        <select name="RoleId" class="form-select">
+                            <option value="">Todos los roles</option>
+                            @foreach (var role in ViewBag.Roles)
+                            {
+                                <option value="@role.Value" selected="@(role.Selected ? "selected" : null)">@role.Text</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Cédula</label>
+                        <input type="text" name="Cedula" class="form-control" value="@ViewBag.Filter.Cedula" placeholder="Buscar por cédula...">
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Ordenar por</label>
+                        <select name="OrderBy" class="form-select">
+                            <option value="">Por defecto</option>
+                            <option value="nombre" selected="@(ViewBag.Filter.OrderBy == "nombre" ? "selected" : null)">Nombre A-Z</option>
+                            <option value="apellido" selected="@(ViewBag.Filter.OrderBy == "apellido" ? "selected" : null)">Apellido A-Z</option>
+                            <option value="fecha_nacimiento" selected="@(ViewBag.Filter.OrderBy == "fecha_nacimiento" ? "selected" : null)">Fecha Nac. ↑</option>
+                            <option value="fecha_nacimiento_desc" selected="@(ViewBag.Filter.OrderBy == "fecha_nacimiento_desc" ? "selected" : null)">Fecha Nac. ↓</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row g-3 mt-2">
+                    <div class="col-md-4">
+                        <label class="form-label">Fecha Nacimiento Desde</label>
+                        <input type="date" name="FechaNacimientoDesde" class="form-control" value="@ViewBag.Filter.FechaNacimientoDesde?.ToString("yyyy-MM-dd")">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Fecha Nacimiento Hasta</label>
+                        <input type="date" name="FechaNacimientoHasta" class="form-control" value="@ViewBag.Filter.FechaNacimientoHasta?.ToString("yyyy-MM-dd")">
+                    </div>
+                    <div class="col-md-4 d-flex align-items-end">
+                        <button type="submit" class="btn btn-primary me-2">
+                            <i class="bi bi-search"></i> Buscar
+                        </button>
+                        <a asp-action="Index" class="btn btn-secondary">
+                            <i class="bi bi-x-circle"></i> Limpiar
+                        </a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
