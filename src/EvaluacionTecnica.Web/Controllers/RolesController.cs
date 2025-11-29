@@ -1,9 +1,11 @@
 using EvaluacionTecnica.Application.DTOs;
 using EvaluacionTecnica.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EvaluacionTecnica.Web.Controllers;
 
+[Authorize]
 public class RolesController : Controller
 {
     private readonly IRoleService _roleService;

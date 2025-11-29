@@ -1,10 +1,12 @@
 using EvaluacionTecnica.Application.DTOs;
 using EvaluacionTecnica.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EvaluacionTecnica.Web.Controllers;
 
+[Authorize]
 public class UsersController : Controller
 {
     private readonly IUserService _userService;
