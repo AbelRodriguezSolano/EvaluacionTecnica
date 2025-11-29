@@ -49,7 +49,7 @@ docker-compose exec -u root app dotnet run --project src/EvaluacionTecnica.Web -
 # Aplicar migraciones (desde tu máquina local)
 dotnet ef database update --project src/EvaluacionTecnica.Infrastructure --startup-project src/EvaluacionTecnica.Web --connection "Server=localhost,1433;Database=EvaluacionTecnicaDB;User Id=sa;Password=MyP@ssw0rd;TrustServerCertificate=True"
 
-# Acceder: http://localhost:5000
+# Acceder desde el navegador: http://localhost:5000
 ```
 
 ### Local (sin Docker)
