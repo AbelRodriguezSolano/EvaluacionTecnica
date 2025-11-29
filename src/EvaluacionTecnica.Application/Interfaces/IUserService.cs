@@ -14,4 +14,5 @@ public interface IUserService
     Task<bool> ExistsByUsuarioNombreAsync(string usuarioNombre);
     Task<bool> ExistsByUsuarioNombreAsync(string usuarioNombre, int excludeId);
     Task<IEnumerable<UserDto>> GetByRoleIdAsync(int roleId);
+    Task<IEnumerable<UserDto>> GetFilteredAsync(UserFilterDto filter);
 }

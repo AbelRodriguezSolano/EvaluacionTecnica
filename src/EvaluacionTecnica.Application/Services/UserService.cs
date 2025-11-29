@@ -111,6 +111,19 @@ public class UserService : IUserService
         return users.Select(u => MapToDto(u));
     }
 
+    public async Task<IEnumerable<UserDto>> GetFilteredAsync(UserFilterDto filter)
+    {
+        var users = await _userRepository.GetFilteredAsync(
+            filter.SearchText,
+            filter.RoleId,
+            filter.Cedula,
+            filter.FechaNacimientoDesde,
+            filter.FechaNacimientoHasta,
+            filter.OrderBy);
+
+        return users.Select(u => MapToDto(u));
+    }
+
     private UserDto MapToDto(User user)
     {
         return new UserDto
